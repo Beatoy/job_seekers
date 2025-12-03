@@ -1,1 +1,5 @@
-jo0sbseekers.mx
+job_seekers/
+   ├── index.html
+   ├── styles.css
+   ├── script.js
+   ├── CNAME jobseekers.mx
