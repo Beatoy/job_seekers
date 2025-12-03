@@ -3,5 +3,5 @@ job_seekers/
 ├── requirements.txt
 ├── templates/
 ├── static/
-├── CNAME   ← AQUÍ (archivo de texto con una sola línea: www.jobseekers.mx)
+├── CNAME  www.jobseekers.mx
 ...
