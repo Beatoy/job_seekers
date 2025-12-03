@@ -1,7 +1,1 @@
-job_seekers/
-├── app.py
-├── requirements.txt
-├── templates/
-├── static/
-├── CNAME   jobseekers.mx
-...
+jobseekers.mx
