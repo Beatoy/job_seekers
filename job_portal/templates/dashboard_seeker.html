@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Empleos Disponibles</h2>
+    {% if recommendation %}
+    <div class="alert alert-info"
+        style="background-color: #e3f2fd; color: #0d47a1; padding: 10px; border-radius: 5px; margin-top: 10px;">
+        <strong>Recomendación de IA:</strong> Basado en tu perfil, te sugerimos buscar vacantes de: <strong>{{
+            recommendation }}</strong>
+    </div>
+    {% endif %}
+</div>
+
+<div class="card-list">
+    {% for vacancy in vacancies %}
+    <div class="card">
+        <h3>{{ vacancy.title }}</h3>
+        <p><strong>Empresa:</strong> {{ vacancy.company_name }}</p>
+        <p><strong>Requisitos:</strong> {{ vacancy.requirements }}</p>
+        <p><strong>Licenciatura:</strong> {{ vacancy.degree }}</p>
+        <p><strong>Sueldo:</strong> {{ vacancy.salary }}</p>
+        <p><strong>Horario:</strong> {{ vacancy.hours }}</p>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <a href="{{ url_for('vacancy_details', vacancy_id=vacancy._id) }}" class="btn"
+                style="background-color: #17a2b8;">Ver más sobre la vacante</a>
+            <button class="btn" onclick="applyToVacancy('{{ vacancy._id }}')">Postularse</button>
+        </div>
+    </div>
+    {% else %}
+    <p>No hay vacantes disponibles por el momento.</p>
+    {% endfor %}
+</div>
+
+<script>
+    function applyToVacancy(vacancyId) {
+        fetch('/apply/' + vacancyId, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al procesar tu solicitud.');
+            });
+    }
+</script>
+{% endblock %}

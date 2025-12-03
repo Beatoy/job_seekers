@@ -1,0 +1,524 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>{{ 'Iniciar Sesión' if type == 'login' else 'Registrarse' }} como {{ user_type|capitalize }}</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" name="password" required>
+        </div>
+
+        {% if type == 'register' %}
+        {% if user_type == 'seeker' %}
+        <div class="form-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" name="surname" required>
+        </div>
+        <div class="form-group">
+            <label>Nivel de Estudios</label>
+            <input type="text" name="education" required>
+        </div>
+        <div class="form-group">
+            <label>Licenciatura</label>
+            <input type="text" name="degree" required>
+        </div>
+        <div class="form-group">
+            <label>Área Profesional</label>
+            <select name="professional_area" required>
+                <option value="Derecho">Derecho</option>
+                <option value="Ventas">Ventas</option>
+                <option value="Atención al cliente">Atención al cliente</option>
+                <option value="Almacén / Bodega">Almacén / Bodega</option>
+                <option value="Ingeniería (general)">Ingeniería (general)</option>
+                <option value="Ingeniería civil">Ingeniería civil</option>
+                <option value="Ingeniería industrial">Ingeniería industrial</option>
+                <option value="Ingeniería mecánica">Ingeniería mecánica</option>
+                <option value="Ingeniería eléctrica">Ingeniería eléctrica</option>
+                <option value="Contabilidad / Finanzas">Contabilidad / Finanzas</option>
+                <option value="Administración">Administración</option>
+                <option value="Recursos Humanos">Recursos Humanos</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+                <option value="Cocina / Gastronomía">Cocina / Gastronomía</option>
+                <option value="Operador de maquinaria">Operador de maquinaria</option>
+                <option value="Carpintería">Carpintería</option>
+                <option value="Construcción / Obras">Construcción / Obras</option>
+                <option value="Educación / Docencia">Educación / Docencia</option>
+                <option value="Seguridad / Vigilancia">Seguridad / Vigilancia</option>
+                <option value="Logística / Transporte">Logística / Transporte</option>
+                <option value="Salud / Enfermería">Salud / Enfermería</option>
+                <option value="Marketing / Publicidad">Marketing / Publicidad</option>
+                <option value="Servicios generales (limpieza, apoyo, etc.)">Servicios generales (limpieza, apoyo, etc.)
+                </option>
+                <option value="Otros">Otros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Experiencia</label>
+            <div class="checkbox-list">
+                <span class="checkbox-group-label">Tecnología</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Python" id="exp_python">
+                    <label for="exp_python">Python</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="JavaScript" id="exp_js">
+                    <label for="exp_js">JavaScript</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="HTML/CSS" id="exp_html">
+                    <label for="exp_html">HTML/CSS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="MySQL / MongoDB" id="exp_db">
+                    <label for="exp_db">MySQL / MongoDB</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Redes" id="exp_redes">
+                    <label for="exp_redes">Redes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Soporte técnico" id="exp_soporte">
+                    <label for="exp_soporte">Soporte técnico</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Testing" id="exp_testing">
+                    <label for="exp_testing">Testing</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Automación" id="exp_auto">
+                    <label for="exp_auto">Automación</label>
+                </div>
+
+                <span class="checkbox-group-label">Derecho</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Derecho" id="exp_derecho">
+                    <label for="exp_derecho">Derecho</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Redacción de documentos" id="exp_redaccion">
+                    <label for="exp_redaccion">Redacción de documentos</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Litigio" id="exp_litigio">
+                    <label for="exp_litigio">Litigio</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Derecho laboral" id="exp_laboral">
+                    <label for="exp_laboral">Derecho laboral</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Derecho civil" id="exp_civil">
+                    <label for="exp_civil">Derecho civil</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Derecho penal" id="exp_penal">
+                    <label for="exp_penal">Derecho penal</label>
+                </div>
+
+                <span class="checkbox-group-label">Ventas</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Ventas" id="exp_ventas">
+                    <label for="exp_ventas">Ventas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Ventas en piso" id="exp_piso">
+                    <label for="exp_piso">Ventas en piso</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Telemarketing" id="exp_tele">
+                    <label for="exp_tele">Telemarketing</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Atención al cliente" id="exp_atencion">
+                    <label for="exp_atencion">Atención al cliente</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="CRM" id="exp_crm">
+                    <label for="exp_crm">CRM</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Cierre de ventas" id="exp_cierre">
+                    <label for="exp_cierre">Cierre de ventas</label>
+                </div>
+
+                <span class="checkbox-group-label">Bodega / Logística</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Bodega / Logística" id="exp_bodega">
+                    <label for="exp_bodega">Bodega / Logística</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Inventarios" id="exp_inv">
+                    <label for="exp_inv">Inventarios</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Carga y descarga" id="exp_carga">
+                    <label for="exp_carga">Carga y descarga</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Manejo de montacargas" id="exp_monta">
+                    <label for="exp_monta">Manejo de montacargas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Control de almacén" id="exp_control">
+                    <label for="exp_control">Control de almacén</label>
+                </div>
+
+                <span class="checkbox-group-label">Contabilidad</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Contabilidad" id="exp_cont">
+                    <label for="exp_cont">Contabilidad</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Captura contable" id="exp_captura">
+                    <label for="exp_captura">Captura contable</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Declaraciones SAT" id="exp_sat">
+                    <label for="exp_sat">Declaraciones SAT</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Nóminas" id="exp_nominas">
+                    <label for="exp_nominas">Nóminas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Auditoría" id="exp_audit">
+                    <label for="exp_audit">Auditoría</label>
+                </div>
+
+                <span class="checkbox-group-label">Cocina / Restaurantes</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Cocina / Restaurantes" id="exp_cocina">
+                    <label for="exp_cocina">Cocina / Restaurantes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Preparación de alimentos" id="exp_prep">
+                    <label for="exp_prep">Preparación de alimentos</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Manejo higiénico" id="exp_hig">
+                    <label for="exp_hig">Manejo higiénico</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Limpieza de cocina" id="exp_limp">
+                    <label for="exp_limp">Limpieza de cocina</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Atención a comensales" id="exp_comen">
+                    <label for="exp_comen">Atención a comensales</label>
+                </div>
+
+                <span class="checkbox-group-label">Mantenimiento</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Mantenimiento" id="exp_mant">
+                    <label for="exp_mant">Mantenimiento</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Electricidad" id="exp_elec">
+                    <label for="exp_elec">Electricidad</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Plomería" id="exp_plom">
+                    <label for="exp_plom">Plomería</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Pintura" id="exp_pint">
+                    <label for="exp_pint">Pintura</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Herramientas" id="exp_herr">
+                    <label for="exp_herr">Herramientas</label>
+                </div>
+
+                <span class="checkbox-group-label">Educación</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Profesor / Educación" id="exp_prof">
+                    <label for="exp_prof">Profesor / Educación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Planeación" id="exp_plan">
+                    <label for="exp_plan">Planeación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Evaluación" id="exp_eval">
+                    <label for="exp_eval">Evaluación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Gestión de grupo" id="exp_gest">
+                    <label for="exp_gest">Gestión de grupo</label>
+                </div>
+
+                <span class="checkbox-group-label">Carpintería</span>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Carpintería" id="exp_carp">
+                    <label for="exp_carp">Carpintería</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Medición" id="exp_med">
+                    <label for="exp_med">Medición</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Corte" id="exp_corte">
+                    <label for="exp_corte">Corte</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Ensamble" id="exp_ens">
+                    <label for="exp_ens">Ensamble</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="experience_tags" value="Uso de herramientas" id="exp_uso">
+                    <label for="exp_uso">Uso de herramientas</label>
+                </div>
+            </div>
+        </div>
+        {% elif user_type == 'student' %}
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" name="surname" required>
+        </div>
+        <div class="form-group">
+            <label>Semestre Actual</label>
+            <input type="text" name="semester" required>
+        </div>
+        <div class="form-group">
+            <label>Licenciatura</label>
+            <input type="text" name="degree" required>
+        </div>
+        <div class="form-group">
+            <label>Universidad</label>
+            <input type="text" name="university" required>
+        </div>
+        <div class="form-group">
+            <label>Horario Escolar</label>
+            <select name="school_schedule" required>
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Situación Actual</label>
+            <select name="current_situation" required>
+                <option value="Busco beca">Busco beca</option>
+                <option value="Busco prácticas">Busco prácticas</option>
+                <option value="Ambas">Ambas</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Conocimientos / Habilidades</label>
+            <div class="checkbox-list">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Bases de datos" id="st_db">
+                    <label for="st_db">Bases de datos</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Derecho" id="st_derecho">
+                    <label for="st_derecho">Derecho</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Derecho civil" id="st_civil">
+                    <label for="st_civil">Derecho civil</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Fundamentos de litigio" id="st_litigio">
+                    <label for="st_litigio">Fundamentos de litigio</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Redacción jurídica" id="st_redaccion">
+                    <label for="st_redaccion">Redacción jurídica</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Administración / Contabilidad" id="st_admin">
+                    <label for="st_admin">Administración / Contabilidad</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Excel" id="st_excel">
+                    <label for="st_excel">Excel</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Contabilidad básica" id="st_cont_basica">
+                    <label for="st_cont_basica">Contabilidad básica</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Finanzas básicas" id="st_finanzas">
+                    <label for="st_finanzas">Finanzas básicas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Educación" id="st_educacion">
+                    <label for="st_educacion">Educación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Planeación" id="st_planeacion">
+                    <label for="st_planeacion">Planeación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Pedagogía" id="st_pedagogia">
+                    <label for="st_pedagogia">Pedagogía</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Gastronomía" id="st_gastro">
+                    <label for="st_gastro">Gastronomía</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Higiene alimentaria" id="st_higiene">
+                    <label for="st_higiene">Higiene alimentaria</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_skills" value="Preparación de alimentos" id="st_prep">
+                    <label for="st_prep">Preparación de alimentos</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sección 4 — Experiencia</label>
+            <div class="checkbox-list">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_experience" value="Servicio social" id="st_exp_social">
+                    <label for="st_exp_social">Servicio social</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_experience" value="Prácticas" id="st_exp_practicas">
+                    <label for="st_exp_practicas">Prácticas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_experience" value="Trabajo temporal" id="st_exp_temporal">
+                    <label for="st_exp_temporal">Trabajo temporal</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_experience" value="Proyecto escolar avanzado"
+                        id="st_exp_proyecto">
+                    <label for="st_exp_proyecto">Proyecto escolar avanzado</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sección 5 — Proyectos estudiantiles</label>
+            <div class="checkbox-list">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_projects" value="Proyecto académico" id="st_proj_acad">
+                    <label for="st_proj_acad">Proyecto académico</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_projects" value="Proyecto de investigación" id="st_proj_inv">
+                    <label for="st_proj_inv">Proyecto de investigación</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_projects" value="Proyecto social" id="st_proj_social">
+                    <label for="st_proj_social">Proyecto social</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_projects" value="Proyecto tecnológico" id="st_proj_tech">
+                    <label for="st_proj_tech">Proyecto tecnológico</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sección 6 — Certificaciones</label>
+            <div class="checkbox-list">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Inglés" id="st_cert_ingles">
+                    <label for="st_cert_ingles">Inglés</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Excel básico" id="st_cert_excel">
+                    <label for="st_cert_excel">Excel básico</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Cursos en línea (Coursera, Platzi, EDx)"
+                        id="st_cert_online">
+                    <label for="st_cert_online">Cursos en línea (Coursera, Platzi, EDx)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Seguridad básica"
+                        id="st_cert_seguridad">
+                    <label for="st_cert_seguridad">Seguridad básica</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Certificación de cocina"
+                        id="st_cert_cocina">
+                    <label for="st_cert_cocina">Certificación de cocina</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_certifications" value="Primeros auxilios"
+                        id="st_cert_auxilios">
+                    <label for="st_cert_auxilios">Primeros auxilios</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sección 7 — Logros</label>
+            <div class="checkbox-list">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Reconocimiento académico"
+                        id="st_ach_acad">
+                    <label for="st_ach_acad">Reconocimiento académico</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Mejor promedio" id="st_ach_promedio">
+                    <label for="st_ach_promedio">Mejor promedio</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Concurso ganado" id="st_ach_concurso">
+                    <label for="st_ach_concurso">Concurso ganado</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Proyecto destacado" id="st_ach_proyecto">
+                    <label for="st_ach_proyecto">Proyecto destacado</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Participación en feria de ciencias"
+                        id="st_ach_feria">
+                    <label for="st_ach_feria">Participación en feria de ciencias</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="student_achievements" value="Trabajo en equipo" id="st_ach_equipo">
+                    <label for="st_ach_equipo">Trabajo en equipo</label>
+                </div>
+            </div>
+        </div>
+        {% elif user_type == 'company' %}
+        <div class="form-group">
+            <label>Nombre de la Empresa</label>
+            <input type="text" name="company_name" required>
+        </div>
+        <div class="form-group">
+            <label>Ubicación/Dirección</label>
+            <input type="text" name="location" required>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <button type="submit" class="btn">{{ 'Iniciar Sesión' if type == 'login' else 'Registrarse' }}</button>
+    </form>
+
+    <p style="margin-top: 20px; text-align: center;">
+        {% if type == 'login' %}
+        ¿No tienes una cuenta? <a href="{{ url_for('register', user_type=user_type) }}">Regístrate aquí</a>
+        {% else %}
+        ¿Ya tienes una cuenta? <a href="{{ url_for('login', user_type=user_type) }}">Inicia sesión aquí</a>
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

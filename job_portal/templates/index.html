@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Bienvenido a Job Seekers</h1>
+    <p>Tu puerta al futuro. ¡Buena suerte en tu búsqueda!</p>
+</div>
+
+<div class="sections">
+    <div class="section-card">
+        <h2>Buscadores de Empleo</h2>
+        <p>Encuentra el trabajo de tus sueños hoy.</p>
+        <a href="{{ url_for('login', user_type='seeker') }}" class="btn">Iniciar Sesión</a>
+        <a href="{{ url_for('register', user_type='seeker') }}" class="btn btn-secondary">Registrarse</a>
+    </div>
+
+    <div class="section-card">
+        <h2>Estudiantes</h2>
+        <p>Comienza tu carrera con las mejores pasantías.</p>
+        <a href="{{ url_for('login', user_type='student') }}" class="btn">Iniciar Sesión</a>
+        <a href="{{ url_for('register', user_type='student') }}" class="btn btn-secondary">Registrarse</a>
+    </div>
+
+    <div class="section-card">
+        <h2>Empresas</h2>
+        <p>Encuentra el mejor talento para tu equipo.</p>
+        <a href="{{ url_for('login', user_type='company') }}" class="btn">Iniciar Sesión</a>
+        <a href="{{ url_for('register', user_type='company') }}" class="btn btn-secondary">Registrarse</a>
+    </div>
+</div>
+{% endblock %}

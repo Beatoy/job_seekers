@@ -1,0 +1,8 @@
+flask
+pymongo
+rsa
+pandas
+scikit-learn
+matplotlib
+seaborn
+

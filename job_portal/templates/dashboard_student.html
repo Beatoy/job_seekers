@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Empresas Buscando Becarios</h2>
+    {% if recommendation %}
+    <div class="alert alert-info"
+        style="background-color: #e3f2fd; color: #0d47a1; padding: 10px; border-radius: 5px; margin-top: 10px;">
+        <strong>Recomendación de IA:</strong> Basado en tu perfil, te sugerimos buscar vacantes de: <strong>{{
+            recommendation }}</strong>
+    </div>
+    {% endif %}
+</div>
+
+<div class="card-list">
+    {% for company in companies %}
+    <div class="card">
+        <h3>{{ company.company_name }}</h3>
+        <p><strong>Ubicación:</strong> {{ company.location }}</p>
+        <p><strong>Correo:</strong> {{ company.email }}</p>
+        <button class="btn">Ver Oportunidades</button>
+    </div>
+    {% else %}
+    <p>No hay empresas listadas por el momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}

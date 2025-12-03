@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Modificar Vacante</h2>
+</div>
+
+<div class="auth-container">
+    <form method="POST">
+        <div class="form-group">
+            <label>Título de la Vacante</label>
+            <input type="text" name="title" value="{{ vacancy.title }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Requisitos</label>
+            <textarea name="requirements" required>{{ vacancy.requirements }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Licenciatura Deseada</label>
+            <input type="text" name="degree" value="{{ vacancy.degree }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Sueldo</label>
+            <input type="text" name="salary" value="{{ vacancy.salary }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Horario Laboral</label>
+            <input type="text" name="hours" value="{{ vacancy.hours }}" required>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button type="submit" class="btn">Guardar Cambios</button>
+            <a href="{{ url_for('dashboard_company') }}" class="btn" style="background-color: #6c757d;">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Detalles de la Vacante</h2>
+</div>
+
+<div class="auth-container" style="max-width: 800px;">
+    <h3>{{ vacancy.title }}</h3>
+    <div class="vacancy-details" style="text-align: left; margin-top: 20px;">
+        <p><strong>Empresa:</strong> {{ vacancy.company_name }}</p>
+        <p><strong>Requisitos:</strong> {{ vacancy.requirements }}</p>
+        <p><strong>Licenciatura requerida:</strong> {{ vacancy.degree }}</p>
+        <p><strong>Sueldo ofrecido:</strong> {{ vacancy.salary }}</p>
+        <p><strong>Horario:</strong> {{ vacancy.hours }}</p>
+        <p><strong>Publicado el:</strong> {{ vacancy.created_at.strftime('%Y-%m-%d') if vacancy.created_at else
+            'Reciente' }}</p>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; gap: 10px; justify-content: center;">
+        <button class="btn" onclick="applyToVacancy('{{ vacancy._id }}')">Postularse</button>
+        <a href="{{ url_for('dashboard_seeker') }}" class="btn" style="background-color: #6c757d;">Volver</a>
+    </div>
+</div>
+
+<script>
+    function applyToVacancy(vacancyId) {
+        fetch('/apply/' + vacancyId, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al procesar tu solicitud.');
+            });
+    }
+</script>
+{% endblock %}
